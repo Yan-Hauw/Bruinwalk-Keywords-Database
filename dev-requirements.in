@@ -1,0 +1,4 @@
+-c requirements.txt
+
+pip-tools==6.4.0
+black==21.10b0

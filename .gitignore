@@ -2,3 +2,6 @@
 geckodriver.exe
 geckodriver.log
 *.txt
+!requirements.txt
+!dev-requirements.txt
+
