@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 browser = webdriver.Firefox()
 
 
-browser.get("https://www.bruinwalk.com/professors/parvaneh-ghaforyfrd/com-sci-33/")
+browser.get("https://www.bruinwalk.com/professors/carey-nachenberg/com-sci-32/")
 
 text = ""
 
@@ -22,17 +22,17 @@ while True:
             By.XPATH, "//div[@class='paginator']/span/a[2]"
         )
         if "disabled" in next_button.get_attribute("class"):
-            print("break")
+
             break
         else:
-            print("click")
+
             next_button.click()
 
     html_file = browser.page_source
 
     soup = BeautifulSoup(html_file, "html.parser")
 
-    keywords = {"slides", "textbook"}
+    keywords = {"slide", "upload", "post", "attendance"}
 
     text = soup.get_text()
 
@@ -45,9 +45,5 @@ while True:
             if i in w:
                 dict[i] = dict[i] + 1 if i in dict else 1
 
-    print("success")
-
-
-print(dict)
 
 browser.close()
