@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 browser = webdriver.Firefox()
 
 
-browser.get("https://www.bruinwalk.com/professors/carey-nachenberg/com-sci-32/")
+browser.get("https://www.bruinwalk.com/professors/junghoo-cho/com-sci-143/")
 
 text = ""
 
@@ -32,7 +32,7 @@ while True:
 
     soup = BeautifulSoup(html_file, "html.parser")
 
-    keywords = {"slide", "upload", "post", "attendance"}
+    keywords = {"slide", "upload", "post", "attendance", "pair", "partner", "together"}
 
     text = soup.get_text()
 
@@ -45,5 +45,6 @@ while True:
             if i in w:
                 dict[i] = dict[i] + 1 if i in dict else 1
 
+print(dict)
 
 browser.close()
