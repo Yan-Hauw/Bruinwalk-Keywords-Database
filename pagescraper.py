@@ -1,5 +1,5 @@
-import sys
 import re
+
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -12,6 +12,7 @@ browser = webdriver.Firefox()
 browser.get("https://www.bruinwalk.com/professors/junghoo-cho/com-sci-143/")
 
 text = ""
+
 
 dict = {}
 

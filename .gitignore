@@ -4,4 +4,4 @@ geckodriver.log
 *.txt
 !requirements.txt
 !dev-requirements.txt
-
+__pycache__
