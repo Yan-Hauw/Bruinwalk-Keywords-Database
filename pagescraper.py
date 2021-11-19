@@ -3,6 +3,8 @@ import re
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 from bs4 import BeautifulSoup
 
 
@@ -15,6 +17,12 @@ text = ""
 
 
 dict = {}
+
+WebDriverWait(browser, 20).until(
+    expected_conditions.presence_of_element_located(
+        (By.XPATH, "//div[@class='paginator']/span/a[2]")
+    )
+)
 
 while True:
 
