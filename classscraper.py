@@ -1,11 +1,24 @@
+# other modules
+
+
+# constants
+from constants import dept_keywords
+
+# utils
+from utils.utils import string_to_number
+
+# libraries
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-department_input_text = "Computer Science"
+
+dept_input_text = "Computer Science"
+dept_keyword = dept_keywords.dept_identifiers[dept_input_text]
 classsearch_input_text = "CS 32"
+class_number = string_to_number(classsearch_input_text)
 
 browser = webdriver.Firefox()
 
@@ -22,7 +35,7 @@ WebDriverWait(browser, 20).until(
 )
 dept_dropdown = browser.find_element(By.ID, "department")
 dept_options_object = Select(dept_dropdown)
-dept_options_object.select_by_visible_text(department_input_text)
+dept_options_object.select_by_visible_text(dept_input_text)
 
 
 WebDriverWait(browser, 20).until(
@@ -50,6 +63,25 @@ search_button = browser.find_element(
 )
 
 browser.execute_script("arguments[0].click();", search_button)
+
+
+WebDriverWait(browser, 20).until(
+    expected_conditions.presence_of_element_located(
+        (
+            By.XPATH,
+            "//div[contains(@class, 'title') and text()='"
+            + dept_keyword
+            + class_number
+            + "']",
+        )
+    )
+)
+enter_course_button = browser.find_element(
+    By.XPATH,
+    "//div[contains(@class, 'title') and text()='" + dept_keyword + class_number + "']",
+)
+
+enter_course_button.click()
 
 
 # browser.close()

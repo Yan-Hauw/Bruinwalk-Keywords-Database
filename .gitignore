@@ -1,7 +1,13 @@
 .venv/
+
 geckodriver.exe
 geckodriver.log
+
 *.txt
 !requirements.txt
 !dev-requirements.txt
+
 __pycache__
+
+test.py
+
