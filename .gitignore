@@ -1,5 +1,7 @@
 .venv/
 
+.env
+
 geckodriver.exe
 geckodriver.log
 
