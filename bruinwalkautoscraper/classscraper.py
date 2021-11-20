@@ -1,5 +1,6 @@
 # other modules
 from enter_course import enter_course
+
 from pagescraper import scrape_page
 
 # constants
