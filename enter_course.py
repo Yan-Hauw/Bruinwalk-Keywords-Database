@@ -75,3 +75,5 @@ def enter_course(
     )
 
     enter_course_button.click()
+
+    return browser

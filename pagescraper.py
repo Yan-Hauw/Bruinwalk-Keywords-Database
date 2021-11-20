@@ -8,52 +8,60 @@ from selenium.webdriver.support import expected_conditions
 from bs4 import BeautifulSoup
 
 
-browser = webdriver.Firefox()
+def scrape_page(url):
 
+    browser = webdriver.Firefox()
 
-browser.get("https://www.bruinwalk.com/professors/junghoo-cho/com-sci-143/")
+    browser.get(url)
 
-text = ""
+    text = ""
 
+    dict = {}
 
-dict = {}
-
-WebDriverWait(browser, 20).until(
-    expected_conditions.presence_of_element_located(
-        (By.XPATH, "//div[@class='paginator']/span/a[2]")
-    )
-)
-
-while True:
-
-    if text:
-        next_button = browser.find_element(
-            By.XPATH, "//div[@class='paginator']/span/a[2]"
+    WebDriverWait(browser, 20).until(
+        expected_conditions.presence_of_element_located(
+            (By.XPATH, "//div[@class='paginator']/span/a[2]")
         )
-        if "disabled" in next_button.get_attribute("class"):
+    )
 
-            break
-        else:
+    while True:
 
-            next_button.click()
+        if text:
+            next_button = browser.find_element(
+                By.XPATH, "//div[@class='paginator']/span/a[2]"
+            )
+            if "disabled" in next_button.get_attribute("class"):
 
-    html_file = browser.page_source
+                break
+            else:
 
-    soup = BeautifulSoup(html_file, "html.parser")
+                next_button.click()
 
-    keywords = {"slide", "upload", "post", "attendance", "pair", "partner", "together"}
+        html_file = browser.page_source
 
-    text = soup.get_text()
+        soup = BeautifulSoup(html_file, "html.parser")
 
-    text = re.sub(r"[^a-zA-Z ]", "", text)
+        keywords = {
+            "slide",
+            "upload",
+            "post",
+            "attendance",
+            "pair",
+            "partner",
+            "together",
+        }
 
-    words = text.split()
+        text = soup.get_text()
 
-    for w in words:
-        for i in keywords:
-            if i in w:
-                dict[i] = dict[i] + 1 if i in dict else 1
+        text = re.sub(r"[^a-zA-Z ]", "", text)
 
-print(dict)
+        words = text.split()
 
-browser.close()
+        for w in words:
+            for i in keywords:
+                if i in w:
+                    dict[i] = dict[i] + 1 if i in dict else 1
+
+    browser.close()
+
+    return dict

@@ -1,5 +1,6 @@
 # other modules
 from enter_course import enter_course
+from pagescraper import scrape_page
 
 # constants
 from constants.dept_keywords import dept_identifiers
@@ -24,9 +25,31 @@ browser = webdriver.Firefox()
 
 browser.get("https://www.bruinwalk.com/search/")
 
-enter_course(
+browser = enter_course(
     browser, dept_input_text, dept_keyword, classsearch_input_text, class_number
 )
 
+course_professor_anchors = browser.find_elements(By.XPATH, "//tr/*[2]/a")
 
-# browser.close()
+urls = []
+
+for a in course_professor_anchors:
+    urls.append(a.get_attribute("href"))
+
+
+professor_spans = browser.find_elements(By.XPATH, "//a/*[1][@class='prof name']")
+
+# print(len(professor_spans))
+
+class_data = []
+
+for span in professor_spans:
+    url = urls.pop(0)
+    results = scrape_page(url)
+    res_tuple = (dept_keyword + class_number, span.text, results)
+    class_data.append(res_tuple)
+
+print(class_data)
+
+
+browser.close()
