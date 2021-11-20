@@ -18,24 +18,20 @@ def scrape_page(url):
 
     dict = {}
 
-    WebDriverWait(browser, 20).until(
-        expected_conditions.presence_of_element_located(
-            (By.XPATH, "//div[@class='paginator']/span/a[2]")
-        )
-    )
-
     while True:
 
         if text:
-            next_button = browser.find_element(
+            next_buttons = browser.find_elements(
                 By.XPATH, "//div[@class='paginator']/span/a[2]"
             )
-            if "disabled" in next_button.get_attribute("class"):
 
+            if not len(next_buttons) or "disabled" in next_buttons[0].get_attribute(
+                "class"
+            ):
                 break
-            else:
 
-                next_button.click()
+            else:
+                next_buttons[0].click()
 
         html_file = browser.page_source
 

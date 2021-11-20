@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions
 def enter_course(
     browser, dept_input_text, dept_keyword, classsearch_input_text, class_number
 ):
-    WebDriverWait(browser, 20).until(
+    WebDriverWait(browser, 3).until(
         expected_conditions.presence_of_element_located(
             (By.XPATH, "//form[@id='category_filter']/a[2]/label")
         )
@@ -21,14 +21,14 @@ def enter_course(
 
     classes_button.click()
 
-    WebDriverWait(browser, 20).until(
+    WebDriverWait(browser, 3).until(
         expected_conditions.presence_of_element_located((By.ID, "department"))
     )
     dept_dropdown = browser.find_element(By.ID, "department")
     dept_options_object = Select(dept_dropdown)
     dept_options_object.select_by_visible_text(dept_input_text)
 
-    WebDriverWait(browser, 20).until(
+    WebDriverWait(browser, 3).until(
         expected_conditions.presence_of_element_located(
             (
                 By.XPATH,
@@ -44,7 +44,7 @@ def enter_course(
     js = 'arguments[0].setAttribute("value", "' + classsearch_input_text + '")'
     browser.execute_script(js, search_box)
 
-    WebDriverWait(browser, 20).until(
+    WebDriverWait(browser, 3).until(
         expected_conditions.presence_of_element_located(
             (By.XPATH, "//form[@class='search-form']/div[1]/i[@class='icon-search']")
         )
@@ -55,7 +55,7 @@ def enter_course(
 
     browser.execute_script("arguments[0].click();", search_button)
 
-    WebDriverWait(browser, 20).until(
+    WebDriverWait(browser, 3).until(
         expected_conditions.presence_of_element_located(
             (
                 By.XPATH,
