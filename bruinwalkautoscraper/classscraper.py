@@ -1,5 +1,5 @@
 # other modules
-from bruinwalkautoscraper.get_class_data import get_class_data
+from get_class_data import get_class_data
 from enter_course import enter_course
 
 
@@ -13,9 +13,9 @@ from utils.utils import string_to_number
 from selenium import webdriver
 
 
-dept_input_text = "Linguistics"
+dept_input_text = "Computer Science"
 dept_keyword = dept_identifiers[dept_input_text]
-classsearch_input_text = "Ling 1"
+classsearch_input_text = "CS 32"
 class_number = string_to_number(classsearch_input_text)
 
 browser = webdriver.Firefox()
@@ -26,7 +26,7 @@ browser = enter_course(
     browser, dept_input_text, dept_keyword, classsearch_input_text, class_number
 )
 
-class_data = get_class_data(browser, dept_keyword, class_number)
+class_data = get_class_data(browser)
 
 
 browser.close()

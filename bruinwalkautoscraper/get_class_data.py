@@ -5,7 +5,7 @@ from pagescraper import scrape_page
 from selenium.webdriver.common.by import By
 
 
-def get_class_data(browser, dept_keyword, class_number):
+def get_class_data(browser):
     class_data = []
 
     while True:
@@ -24,7 +24,7 @@ def get_class_data(browser, dept_keyword, class_number):
         for span in professor_spans:
             url = urls.pop(0)
             results = scrape_page(url)
-            res_tuple = (dept_keyword + class_number, span.text, results)
+            res_tuple = (span.text, results)
             class_data.append(res_tuple)
 
         next_button = browser.find_element(
