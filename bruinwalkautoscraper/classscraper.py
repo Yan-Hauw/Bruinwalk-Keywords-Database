@@ -1,5 +1,4 @@
 # other modules
-from write_json_file import write_json_file
 from get_class_data import get_class_data
 from enter_course import enter_course
 
@@ -28,8 +27,6 @@ browser = enter_course(
 )
 
 class_data = get_class_data(browser)
-
-write_json_file(class_data, dept_keyword, class_number)
 
 
 browser.close()
