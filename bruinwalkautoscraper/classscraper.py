@@ -28,5 +28,4 @@ browser = enter_course(
 
 class_data = get_class_data(browser)
 
-
 browser.close()

@@ -1,6 +1,4 @@
-.venv/
-
-.env
+env/
 
 geckodriver.exe
 geckodriver.log
@@ -12,4 +10,4 @@ geckodriver.log
 __pycache__
 
 test.py
-
+server_keys.py

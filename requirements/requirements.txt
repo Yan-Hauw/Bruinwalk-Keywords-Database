@@ -30,8 +30,14 @@ idna==3.3
     # via
     #   trio
     #   urllib3
+mysql-connector-python==8.0.27
+    # via -r requirements/requirements.in
 outcome==1.1.0
     # via trio
+protobuf==3.19.1
+    # via
+    #   -r requirements/requirements.in
+    #   mysql-connector-python
 pycparser==2.21
     # via cffi
 pyopenssl==21.0.0
