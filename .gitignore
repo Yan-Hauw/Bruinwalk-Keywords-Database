@@ -3,6 +3,8 @@ env/
 geckodriver.exe
 geckodriver.log
 
+*.del
+
 *.txt
 !requirements.txt
 !dev-requirements.txt

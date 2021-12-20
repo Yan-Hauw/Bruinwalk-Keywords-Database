@@ -30,7 +30,7 @@ def scrape_class(browser, course_name):
 
     # On the page of the desired course,
     # scrape each of the pages belonging to the different professor
-    class_data = get_class_data(browser)
+    class_data = get_class_data(browser, course_name)
 
     browser.close()
 

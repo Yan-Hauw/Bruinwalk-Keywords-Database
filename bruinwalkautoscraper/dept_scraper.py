@@ -1,4 +1,5 @@
 # other modules
+from convert_to_loadfile import convert_to_loadfile
 from classscraper import scrape_class
 from courselist_locate import locate_course
 from generate_courses import generate_dept_course_list
@@ -39,6 +40,8 @@ for course in list_of_courses:
     course_keywords = scrape_class(new_browser, course)
 
     all_results.append(course_keywords)
+
+# convert_to_loadfile(all_results)
 
 
 print(all_results)

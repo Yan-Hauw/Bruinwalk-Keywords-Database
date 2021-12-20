@@ -18,6 +18,11 @@ def scrape_page(url):
 
     dict = {}
 
+    keywords = scraping_keywords
+
+    for i in keywords:
+        dict[i] = 0
+
     while True:
 
         if text:
@@ -36,8 +41,6 @@ def scrape_page(url):
         html_file = browser.page_source
 
         soup = BeautifulSoup(html_file, "html.parser")
-
-        keywords = scraping_keywords
 
         text = soup.get_text()
 
