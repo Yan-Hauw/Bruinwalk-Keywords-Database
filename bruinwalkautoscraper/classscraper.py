@@ -1,38 +1,37 @@
 # other modules
 from get_class_data import get_class_data
-from enter_course import enter_course
-
-
-# constants
-from constants.dept_identifiers import dept_identifiers
-
-# utils
-from utils.utils import string_to_number
 
 # libraries
-from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 
-dept_name = "Computer Science"
-dept_keyword = dept_identifiers[dept_name]
-classsearch_input_text = "CS 32"
-class_number = string_to_number(classsearch_input_text)
+def scrape_class(browser, course_name):
 
-browser = webdriver.Firefox()
+    # Wait for the web elements of desired class to appear
+    # and click appropriate element
 
-browser.get("https://www.bruinwalk.com/search/")
+    WebDriverWait(browser, 3).until(
+        expected_conditions.presence_of_element_located(
+            (
+                By.XPATH,
+                "//div[contains(@class, 'title') and text()='" + course_name + "']",
+            )
+        )
+    )
 
-# Returns a browser that has navigated to the correct course
+    enter_course_button = browser.find_element(
+        By.XPATH,
+        "//div[contains(@class, 'title') and text()='" + course_name + "']",
+    )
 
-browser = enter_course(
-    browser, dept_name, dept_keyword, classsearch_input_text, class_number
-)
+    enter_course_button.click()
 
-# On the page of the desired course,
-# scrape each of the pages belonging to the different professor
+    # On the page of the desired course,
+    # scrape each of the pages belonging to the different professor
+    class_data = get_class_data(browser)
 
-class_data = get_class_data(browser)
+    browser.close()
 
-print(class_data)
-
-browser.close()
+    return class_data
