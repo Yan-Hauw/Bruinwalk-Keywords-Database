@@ -1,4 +1,4 @@
-# Bruinwalk-scraper-and-analyzer
+# Bruinwalk Keywords Database
 
 A python program to search scrape and process the text of a page on bruinwalk.com for the appearance of specific keywords
 
