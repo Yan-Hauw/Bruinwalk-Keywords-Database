@@ -5,11 +5,8 @@ from generate_courses import generate_dept_course_list
 
 
 # constants
-from constants.dept_identifiers import dept_identifiers
 from constants.courses_by_dept import courses_by_dept
 
-# utils
-from utils.utils import string_to_number
 
 # libraries
 from selenium import webdriver
