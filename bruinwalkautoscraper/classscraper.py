@@ -13,8 +13,8 @@ from utils.utils import string_to_number
 from selenium import webdriver
 
 
-dept_input_text = "Computer Science"
-dept_keyword = dept_identifiers[dept_input_text]
+dept_name = "Computer Science"
+dept_keyword = dept_identifiers[dept_name]
 classsearch_input_text = "CS 32"
 class_number = string_to_number(classsearch_input_text)
 
@@ -22,9 +22,14 @@ browser = webdriver.Firefox()
 
 browser.get("https://www.bruinwalk.com/search/")
 
+# Returns a browser that has navigated to the correct course
+
 browser = enter_course(
-    browser, dept_input_text, dept_keyword, classsearch_input_text, class_number
+    browser, dept_name, dept_keyword, classsearch_input_text, class_number
 )
+
+# On the page of the desired course,
+# scrape each of the pages belonging to the different professor
 
 class_data = get_class_data(browser)
 
