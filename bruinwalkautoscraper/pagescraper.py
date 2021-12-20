@@ -7,6 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from bs4 import BeautifulSoup
 
+# constants
+from constants.scraping_keywords import scraping_keywords
+
 
 def scrape_page(url):
 
@@ -37,15 +40,7 @@ def scrape_page(url):
 
         soup = BeautifulSoup(html_file, "html.parser")
 
-        keywords = {
-            "slide",
-            "upload",
-            "post",
-            "attendance",
-            "pair",
-            "partner",
-            "together",
-        }
+        keywords = scraping_keywords
 
         text = soup.get_text()
 

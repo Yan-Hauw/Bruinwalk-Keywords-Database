@@ -4,7 +4,7 @@ from enter_course import enter_course
 
 
 # constants
-from constants.dept_keywords import dept_identifiers
+from constants.dept_identifiers import dept_identifiers
 
 # utils
 from utils.utils import string_to_number
