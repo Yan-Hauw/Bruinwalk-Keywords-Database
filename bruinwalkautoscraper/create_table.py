@@ -74,6 +74,3 @@ def create_table(department):
 
     cursor.close()
     cnx.close()
-
-
-create_table("CS")

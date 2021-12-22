@@ -44,7 +44,7 @@ for course in list_of_courses:
 
 convert_to_loadfile(all_results)
 
-create_table(dept_name)
+create_table("CS")
 
 
 print(all_results)
