@@ -1,4 +1,4 @@
-scraping_keywords = {
+scraping_keywords = (
     "slide",
     "upload",
     "post",
@@ -6,4 +6,4 @@ scraping_keywords = {
     "pair",
     "partner",
     "together",
-}
+)

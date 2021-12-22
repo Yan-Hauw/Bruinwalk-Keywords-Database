@@ -1,4 +1,5 @@
 # other modules
+from create_table import create_table
 from convert_to_loadfile import convert_to_loadfile
 from classscraper import scrape_class
 from courselist_locate import locate_course
@@ -42,6 +43,8 @@ for course in list_of_courses:
     all_results.append(course_keywords)
 
 convert_to_loadfile(all_results)
+
+create_table(dept_name)
 
 
 print(all_results)
