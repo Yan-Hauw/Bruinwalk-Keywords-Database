@@ -41,7 +41,7 @@ for course in list_of_courses:
 
     all_results.append(course_keywords)
 
-# convert_to_loadfile(all_results)
+convert_to_loadfile(all_results)
 
 
 print(all_results)
