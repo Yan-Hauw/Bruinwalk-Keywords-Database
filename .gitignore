@@ -4,6 +4,7 @@ geckodriver.exe
 geckodriver.log
 
 *.del
+*.csv
 
 *.txt
 !requirements.txt
