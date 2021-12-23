@@ -15,7 +15,7 @@ def create_table(department):
     TABLES = {}
     TABLES[
         department
-    ] = "CREATE TABLE {department} (course_name varchar(30) NOT NULL, lecturer varchar(30) NOT NULL, {w1} varchar(30) NOT NULL, {w2} varchar(30) NOT NULL, {w3} varchar(30) NOT NULL, {w4} varchar(30) NOT NULL, {w5} varchar(30) NOT NULL, {w6} varchar(30) NOT NULL, {w7} varchar(30) NOT NULL) ENGINE=InnoDB"
+    ] = "CREATE TABLE {department} (course_name varchar(30) NOT NULL, lecturer varchar(30) NOT NULL, {w1} int NOT NULL, {w2} int NOT NULL, {w3} int NOT NULL, {w4} int NOT NULL, {w5} int NOT NULL, {w6} int NOT NULL, {w7} int NOT NULL) ENGINE=InnoDB"
 
     template_table_values = {
         "department": department,
@@ -74,3 +74,6 @@ def create_table(department):
 
     cursor.close()
     cnx.close()
+
+
+create_table("CS")
