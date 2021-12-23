@@ -6,32 +6,35 @@ from sqlalchemy import create_engine
 from constants.server_keys import mysqlServer
 from constants.scraping_keywords import scraping_keywords
 
-engine_path = "mysql://{username}:{password}@{host}/{db_name}"
 
-keys_template = {
-    "username": mysqlServer.username,
-    "password": mysqlServer.password,
-    "host": mysqlServer.host,
-    "db_name": mysqlServer.database,
-}
+def load_table(department):
 
-engine = create_engine(
-    engine_path.format(**keys_template)
-)  # enter your password and database names here
+    engine_path = "mysql://{username}:{password}@{host}/{db_name}"
 
-keyword_cols = list(scraping_keywords)
+    keys_template = {
+        "username": mysqlServer.username,
+        "password": mysqlServer.password,
+        "host": mysqlServer.host,
+        "db_name": mysqlServer.database,
+    }
 
-cols = ["course_name", "lecturer"]
+    engine = create_engine(
+        engine_path.format(**keys_template)
+    )  # enter your password and database names here
 
-cols += keyword_cols
+    keyword_cols = list(scraping_keywords)
 
-df = pd.read_csv(
-    "scraper_data.csv",
-    sep=",",
-    quotechar='"',
-    header=None,
-    names=cols,
-)  # Replace Excel_file_name with your excel sheet name
-df.to_sql(
-    "cs", con=engine, index=False, if_exists="append"
-)  # Replace Table_name with your sql table name
+    cols = ["course_name", "lecturer"]
+
+    cols += keyword_cols
+
+    df = pd.read_csv(
+        "scraper_data.csv",
+        sep=",",
+        quotechar='"',
+        header=None,
+        names=cols,
+    )  # Replace Excel_file_name with your excel sheet name
+    df.to_sql(
+        department, con=engine, index=False, if_exists="append"
+    )  # Replace Table_name with your sql table name

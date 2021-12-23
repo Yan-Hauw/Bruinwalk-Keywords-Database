@@ -1,4 +1,5 @@
 # other modules
+from load_table import load_table
 from create_table import create_table
 from convert_to_loadfile import convert_to_loadfile
 from classscraper import scrape_class
@@ -44,7 +45,15 @@ for course in list_of_courses:
 
 convert_to_loadfile(all_results)
 
-create_table("CS")
+dept_name = dept_name.lower()
+
+dept_name = dept_name.replace(" ", "_")
+
+print(dept_name)
+
+create_table(dept_name)
+
+load_table(dept_name)
 
 
 print(all_results)
